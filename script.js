@@ -26,6 +26,7 @@ function getTime(){
         console.log(percentage)
         root.style.setProperty("--percent", percentage+"%");
     }else{
+        document.title = missingtime.getMonth() + ' months ' + (missingtime.getDate()) + ' days'
         document.getElementById("timeLeft").innerText = "Not even close"
         root.style.setProperty("--percent", "0%");
         let timeEle = document.getElementById("timeLeft");
@@ -95,6 +96,7 @@ function randomCheck(){
 }
 
 if(xmasTrue){
+    document.title = "Xmas is coming!"
     setInterval(randomCheck, 10000);
     snowFall(-1, 250);
 }
