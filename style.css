@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #120926;
+}
+
+#timeLeft {
+    z-index: 2;
+    color: snow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3em;
+    position: fixed;
+    bottom: calc(var(--percent) - 5%);
+    left:20%;
+    transform: translateY(-50%);
+}
+
+h2{
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+#snow {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: var(--percent);
+    background-color: snow;
+}
+
+.snowfall {
+    aspect-ratio: 1/1;
+    background-color: snow;
+    position: fixed;
+    top: -10%;
+    left: 0;
+    border-radius: 50%;
+    animation-name: fall;
+    animation-fill-mode: forwards;
+    animation-duration: 15s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+    }
+    100%{
+        top: 110%;
+    }
+}
+
+.moon{
+    background-color:red;
+    position:fixed;
+    margin:auto;
+    background-color:transparent;
+    height:100px;
+    width:100px;
+    border-radius:50%;
+    box-shadow:25px 10px 0 0 #655612;
+    transform: rotate(-20deg);
+    animation-name: moon;
+    animation-duration: 300s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes moon {
+    0% {
+        transform: rotate(-30deg);
+        top: 30%;
+        left:-5%;
+    }
+    25%{
+        transform: rotate(-15deg);
+        top: 20%;
+        left:25%;
+    }
+    50% {
+        transform: rotate(0deg);
+        top: 10%;
+        left:50%;
+    }
+    75%{
+        transform: rotate(15deg);
+        top: 20%;
+        left:75%;
+    }
+    100%{
+        transform: rotate(30deg);
+        top:30%;
+        left:110%;
+    }
+}
+
+pre {
+    color: snow;
+}
+
+#santa {
+    height: 120vw;
+    width: 20%;
+    position: fixed;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%) rotate(-90deg);
+    transition: height 0s ease;
+}
+
+.moveSanta {
+    height: 100vw !important;
+    animation-name: santa;
+    animation-duration: 10s;
+}
+
+@keyframes santa {
+    0%{
+        transform: rotate(-90deg);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}
