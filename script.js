@@ -2,6 +2,7 @@ const root = document.querySelector(":root");
 
 let xmasTrue = false;
 let xmasHere = false;
+let intervals = [];
 
 function getTime(){
     let today = new Date();
@@ -82,6 +83,7 @@ function snowFall(amount, interval=100){
         createSnow()
         count++;
     }, interval);
+    intervals.push(inter);
 }
 
 function showSanta(){
@@ -100,10 +102,13 @@ function randomCheck(){
 
 if(xmasTrue && !xmasHere){
     document.title = "Xmas is coming!"
-    setInterval(randomCheck, 10000);
+    intervals.push(setInterval(randomCheck, 10000));
     snowFall(-1, 250);
 }
 
 function showtree(){
+    for(let i = 0; i<intervals.length; i++){
+        clearInterval(intervals[i]);
+    }
     document.getElementById("tree").id = "visibleTree"
 }
