@@ -1,11 +1,12 @@
 const root = document.querySelector(":root");
 
 let xmasTrue = false;
+let xmasHere = false;
 
 function getTime(){
     let today = new Date();
     let year = today.getFullYear();
-    let xmas = new Date("December 24, "+year)
+    let xmas = new Date("12/24/"+year)
 
     let startDate = 4579200000;
     let vars = getComputedStyle(root);
@@ -17,6 +18,8 @@ function getTime(){
         let timeEle = document.getElementById("timeLeft");
         timeEle.style.bottom = "50%";
         timeEle.style.color = "#120926";
+        setTimeout(showtree, 300);
+        xmasHere = true;
         return
     }
     let calcmiss = startDate-missingtime.getTime();
@@ -36,16 +39,16 @@ function getTime(){
     }
     let timeEle = document.getElementById("timeLeft");
 
-    let hours = missingtime.getHours()
+    let hours = missingtime.getUTCHours()
     hours = hours.toString().length == 1 ? "0"+hours : hours;
 
-    let minutes = missingtime.getMinutes()
+    let minutes = missingtime.getUTCMinutes()
     minutes = minutes.toString().length == 1 ? "0"+minutes : minutes;
 
-    let seconds = missingtime.getSeconds()
+    let seconds = missingtime.getUTCSeconds()
     seconds = seconds.toString().length == 1 ? "0"+seconds : seconds;
 
-    timeEle.innerHTML = missingtime.getMonth() + ' months ' + (missingtime.getDate()) + ' days ' + hours + ':' + minutes + ':' + seconds + "<br><h2>Until Christmas</h2>";
+    timeEle.innerHTML = missingtime.getUTCMonth() + ' months ' + (missingtime.getUTCDate()-1) + ' days ' + hours + ':' + minutes + ':' + seconds + "<br><h2>Until Christmas</h2>";
 
     let percent = vars.getPropertyValue("--percent");
 
@@ -95,8 +98,12 @@ function randomCheck(){
     }
 }
 
-if(xmasTrue){
+if(xmasTrue && !xmasHere){
     document.title = "Xmas is coming!"
     setInterval(randomCheck, 10000);
     snowFall(-1, 250);
+}
+
+function showtree(){
+    document.getElementById("tree").id = "visibleTree"
 }
