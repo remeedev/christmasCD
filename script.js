@@ -9,7 +9,7 @@ function getTime(){
     let year = today.getFullYear();
     let xmas = new Date("12/24/"+year)
 
-    let startDate = 4579200000;
+    let startDate = 7776000000; // Converted to milliseconds the amount of days missing until it starts to show time until christmas
     let vars = getComputedStyle(root);
 
     let missingtime = new Date(xmas-today);
